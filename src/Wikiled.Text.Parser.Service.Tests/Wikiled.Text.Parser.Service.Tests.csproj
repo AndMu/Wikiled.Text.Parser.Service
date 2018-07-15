@@ -13,6 +13,7 @@
     <PackageReference Include="Wikiled.Server.Core" Version="1.2.0" />
     <PackageReference Include="Wikiled.Common" Version="1.1.0" />
     <PackageReference Include="Wikiled.Text.Parser" Version="1.0.2" />
+    <PackageReference Include="RichardSzalay.MockHttp" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
