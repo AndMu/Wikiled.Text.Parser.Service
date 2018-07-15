@@ -20,6 +20,10 @@
     <PackageReference Include="Wikiled.Text.Parser" Version="1.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Wikiled.Text.Parser.Api\Wikiled.Text.Parser.Api.csproj" />
+  </ItemGroup>
+
   <!--<ItemGroup>
     <ProjectReference Include="..\Wikiled.Text.Parser\Wikiled.Text.Parser.csproj" />
   </ItemGroup>-->

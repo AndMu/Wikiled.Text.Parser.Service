@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
 using Wikiled.Server.Core.ActionFilters;
 using Wikiled.Server.Core.Helpers;
+using Wikiled.Text.Parser.Api.Data;
 using Wikiled.Text.Parser.Readers;
 using Wikiled.Text.Parser.Service.Logic;
 

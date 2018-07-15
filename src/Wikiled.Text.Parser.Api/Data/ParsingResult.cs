@@ -1,4 +1,4 @@
-﻿namespace Wikiled.Text.Parser.Service.Logic
+﻿namespace Wikiled.Text.Parser.Api.Data
 {
     public class ParsingResult
     {
