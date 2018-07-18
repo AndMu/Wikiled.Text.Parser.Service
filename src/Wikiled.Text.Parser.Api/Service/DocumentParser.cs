@@ -45,7 +45,7 @@ namespace Wikiled.Text.Parser.Api.Service
             MultipartFormDataContent multiContent = new MultipartFormDataContent();
             multiContent.Add(bytes, "file", name);
             var result = client.PostAsync("api/parse/processfile", multiContent).Result;
-            var data = await deserializer.GetData<RawResponse<ParsingResult>>(result);
+            var data = await deserializer.GetData<RawResponse<ParsingResult>>(result).ConfigureAwait(false);
             if (!data.IsSuccess)
             {
                 logger.LogError("Failed to retrieve data {0}", data.HttpResponseMessage.ToString());
