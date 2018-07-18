@@ -5,7 +5,7 @@ using Wikiled.Text.Parser.Api.Data;
 
 namespace Wikiled.Text.Parser.Api.Service
 {
-    public interface IDocumentParser : IDisposable
+    public interface IDocumentParser
     {
         Task<ParsingResult> Parse(string name, byte[] fileData, CancellationToken token);
     }
