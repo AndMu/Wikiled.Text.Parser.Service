@@ -16,7 +16,7 @@
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.2" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
     <PackageReference Include="Wikiled.Common.Utilities" Version="1.1.1" />
-    <PackageReference Include="Wikiled.Server.Core" Version="1.2.6" />
+    <PackageReference Include="Wikiled.Server.Core" Version="1.2.7" />
     <PackageReference Include="Wikiled.Common" Version="1.1.1" />
     <PackageReference Include="Wikiled.Text.Parser" Version="1.0.14" />
   </ItemGroup>

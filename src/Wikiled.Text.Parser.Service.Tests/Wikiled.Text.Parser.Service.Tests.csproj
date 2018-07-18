@@ -26,7 +26,7 @@
     <PackageReference Include="NUnit" Version="3.10.1" />
     <packagereference Include="Microsoft.NET.Test.Sdk" Version="15.8.0"></packagereference>
     <packagereference Include="NUnit3TestAdapter" Version="3.10.0" />
-    <PackageReference Include="Wikiled.Server.Core" Version="1.2.6" />
+    <PackageReference Include="Wikiled.Server.Core" Version="1.2.7" />
     <PackageReference Include="Wikiled.Common" Version="1.1.1" />
     <PackageReference Include="Wikiled.Server.Core.Testing" Version="1.2.6" />
     <PackageReference Include="Wikiled.Text.Parser" Version="1.0.14" />
