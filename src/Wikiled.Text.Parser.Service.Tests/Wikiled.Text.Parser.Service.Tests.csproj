@@ -37,6 +37,12 @@
     <ProjectReference Include="..\Wikiled.Text.Parser.Service\Wikiled.Text.Parser.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\Research.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
   <Target Name="ForceGenerationOfBindingRedirects" AfterTargets="ResolveAssemblyReferences" BeforeTargets="GenerateBindingRedirects" Condition="'$(AutoGenerateBindingRedirects)' == 'true'">
     <PropertyGroup>
       <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.IO;
-using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Microsoft.Net.Http.Headers;
 using Wikiled.Server.Core.ActionFilters;
 using Wikiled.Server.Core.Controllers;
 using Wikiled.Text.Parser.Api.Data;
 using Wikiled.Text.Parser.Readers;
+using Wikiled.Text.Parser.Readers.DevExpress;
 using Wikiled.Text.Parser.Service.Logic;
 
 namespace Wikiled.Text.Parser.Service.Controllers
@@ -29,29 +29,27 @@ namespace Wikiled.Text.Parser.Service.Controllers
             this.handler = handler ?? throw new ArgumentNullException(nameof(handler));
         }
 
-        [HttpPost, DisableRequestSizeLimit]
+        [HttpPost]
+        [RequestSizeLimit(1024 * 1024 * 100)]
         [Route("processfile")]
-        public ActionResult<ParsingResult> ProcessFile(IFormFile file)
+        public async Task<ActionResult<ParsingResult>> ProcessFile([FromBody] ParsingRequest request)
         {
-            if (file.Length != 1)
-            {
-                return StatusCode(500, "Only single file supported");
-            }
-
-            var fileNameData = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName;
-            string fileName = fileNameData.Value;
-            string fullPath = handler.GetFileName(fileName);
+            string fullPath = handler.GetFileName(request.Name);
             using (var stream = new FileStream(fullPath, FileMode.Create))
             {
-                file.CopyTo(stream);
+                await stream.WriteAsync(request.Data);
             }
 
             var fileInfo = new FileInfo(fullPath);
             var parser = parserFactory.ConstructParsers(fileInfo);
+            if (parser is NullTextParser)
+            {
+                return StatusCode(500, "Can't process this type of file");
+            }
+
             var result = parser.Parse();
             ParsingResult parsingResult = new ParsingResult();
             parsingResult.Text = result;
-            parsingResult.FileLength = fileNameData.Length;
             parsingResult.Name = fileInfo.Name;
             return Ok(parsingResult);
         }
