@@ -41,7 +41,7 @@ namespace Wikiled.Text.Parser.Service.Tests.Service
         {
             // Setup a respond for the user api (including a wildcard in the URL)
             string output = JsonConvert.SerializeObject(result);
-            mockHttp.When("http://localhost/api/parse/processfile")
+            mockHttp.When("http://localhost/api/parser/processfile")
                     .Respond("application/json", output);
             var actual = await instance.Parse("Test", new byte[] { }, CancellationToken.None).ConfigureAwait(false);
             Assert.AreEqual("Text", actual.Text);
