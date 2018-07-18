@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
 using Wikiled.Common.Net.Client;
@@ -7,7 +6,7 @@ using Wikiled.Text.Parser.Api.Data;
 
 namespace Wikiled.Text.Parser.Api.Service
 {
-    public class DocumentParser
+    public class DocumentParser : IDocumentParser
     {
         private readonly IApiClient client;
 
