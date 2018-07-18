@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Wikiled.Common.Utilities.Config;
 using Wikiled.Server.Core.Errors;
 using Wikiled.Server.Core.Helpers;
 using Wikiled.Text.Parser.Readers;
@@ -90,7 +91,8 @@ namespace Wikiled.Text.Parser.Service
 
         private void SetupOther(ContainerBuilder builder)
         {
-            builder.RegisterType<IpResolve>().As<IIpResolve>();
+            builder.RegisterType<ApplicationConfiguration>().As<IApplicationConfiguration>();
+            builder.RegisterType<EnviromentHandler>().As<IEnviromentHandler>();
             builder.RegisterType<DevExpressParserFactory>().As<ITextParserFactory>();
         }
     }

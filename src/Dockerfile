@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.1.301-sdk AS builder
+FROM microsoft/dotnet:2.1.302-sdk AS builder
 ARG BUILD_VERSION  
 WORKDIR /source
 

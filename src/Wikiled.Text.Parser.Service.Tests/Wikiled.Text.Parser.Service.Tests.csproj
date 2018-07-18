@@ -6,13 +6,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="appsettings.json" />
+    <None Remove="nlog.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Moq" Version="4.9.0" />
     <PackageReference Include="NUnit" Version="3.10.1" />
     <packagereference Include="Microsoft.NET.Test.Sdk" Version="15.8.0"></packagereference>
     <packagereference Include="NUnit3TestAdapter" Version="3.10.0" />
-    <PackageReference Include="Wikiled.Server.Core" Version="1.2.0" />
-    <PackageReference Include="Wikiled.Common" Version="1.1.0" />
-    <PackageReference Include="Wikiled.Text.Parser" Version="1.0.2" />
+    <PackageReference Include="Wikiled.Server.Core" Version="1.2.6" />
+    <PackageReference Include="Wikiled.Common" Version="1.1.1" />
+    <PackageReference Include="Wikiled.Server.Core.Testing" Version="1.2.6" />
+    <PackageReference Include="Wikiled.Text.Parser" Version="1.0.14" />
     <PackageReference Include="RichardSzalay.MockHttp" Version="5.0.0" />
   </ItemGroup>
 
