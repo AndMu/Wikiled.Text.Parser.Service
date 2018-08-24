@@ -47,7 +47,7 @@ namespace Wikiled.Text.Parser.Service.Controllers
                 return StatusCode(500, "Can't process this type of file");
             }
 
-            var result = parser.Parse();
+            var result = await parser.Parse().ConfigureAwait(false);
             ParsingResult parsingResult = new ParsingResult();
             parsingResult.Text = result;
             parsingResult.Name = fileInfo.Name;

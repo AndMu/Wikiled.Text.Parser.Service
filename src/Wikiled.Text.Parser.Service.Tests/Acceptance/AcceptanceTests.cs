@@ -33,7 +33,8 @@ namespace Wikiled.Text.Parser.Service.Tests.Acceptance
             DocumentParser parser = new DocumentParser(new ApiClientFactory(wrapper.Client, wrapper.Client.BaseAddress));
             var data = await File.ReadAllBytesAsync(Path.Combine(TestContext.CurrentContext.TestDirectory, "Data", "Research.pdf")).ConfigureAwait(false);
             var result = await parser.Parse("Test.pdf", data, CancellationToken.None).ConfigureAwait(false);
-            Assert.AreEqual(99621, result.Text.Length);
+            Assert.AreEqual(35, result.Text.Pages.Length);
+            Assert.AreEqual(1718, result.Text.Pages[0].Blocks[0].Text.Length);
         }
 
         [OneTimeTearDown]
