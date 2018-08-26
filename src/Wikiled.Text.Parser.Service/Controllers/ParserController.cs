@@ -49,7 +49,7 @@ namespace Wikiled.Text.Parser.Service.Controllers
 
             var result = await parser.Parse().ConfigureAwait(false);
             ParsingResult parsingResult = new ParsingResult();
-            parsingResult.Text = result;
+            parsingResult.Document = result;
             parsingResult.Name = fileInfo.Name;
             return Ok(parsingResult);
         }

@@ -4,7 +4,7 @@ namespace Wikiled.Text.Parser.Api.Data
 {
     public class ParsingResult
     {
-        public RawDocument Text { get; set; }
+        public RawDocument Document { get; set; }
 
         public string Name { get; set; }
     }

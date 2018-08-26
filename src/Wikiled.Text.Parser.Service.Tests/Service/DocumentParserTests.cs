@@ -30,9 +30,9 @@ namespace Wikiled.Text.Parser.Service.Tests.Service
         {
             result = new ParsingResult();
             result.Name = "Test";
-            result.Text = new RawDocument();
-            result.Text.Pages = new RawPage[1];
-            result.Text.Pages[0] = new RawPage
+            result.Document = new RawDocument();
+            result.Document.Pages = new RawPage[1];
+            result.Document.Pages[0] = new RawPage
             {
                 Blocks = new[]
                 {
@@ -56,7 +56,7 @@ namespace Wikiled.Text.Parser.Service.Tests.Service
             mockHttp.When("http://localhost/api/parser/processfile")
                     .Respond("application/json", output);
             var actual = await instance.Parse("Test", new byte[] { }, CancellationToken.None).ConfigureAwait(false);
-            Assert.AreEqual("Text", actual.Text.Pages[0].Blocks[0].Text);
+            Assert.AreEqual("Text", actual.Document.Pages[0].Blocks[0].Text);
         }
 
         [Test]
