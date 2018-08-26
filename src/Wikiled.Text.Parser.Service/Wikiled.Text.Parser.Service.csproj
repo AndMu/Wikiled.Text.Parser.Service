@@ -18,7 +18,7 @@
     <PackageReference Include="Wikiled.Common.Utilities" Version="1.1.1" />
     <PackageReference Include="Wikiled.Server.Core" Version="1.2.10" />
     <PackageReference Include="Wikiled.Common" Version="1.1.1" />
-    <PackageReference Include="Wikiled.Text.Parser" Version="1.0.16" />
+    <PackageReference Include="Wikiled.Text.Parser" Version="1.0.18" />
   </ItemGroup>
 
   <ItemGroup>
