@@ -30,8 +30,8 @@ namespace Wikiled.Text.Parser.Service.Tests.Acceptance
         [Test]
         public async Task Parse()
         {
-            DocumentParser parser = new DocumentParser(new ApiClientFactory(wrapper.Client, wrapper.Client.BaseAddress));
-            var data = await File.ReadAllBytesAsync(Path.Combine(TestContext.CurrentContext.TestDirectory, "Data", "Research.pdf")).ConfigureAwait(false);
+            var parser = new DocumentParser(new ApiClientFactory(wrapper.Client, wrapper.Client.BaseAddress));
+            var data = File.ReadAllBytes(Path.Combine(TestContext.CurrentContext.TestDirectory, "Data", "Research.pdf"));
             var result = await parser.Parse("Test.pdf", data, CancellationToken.None).ConfigureAwait(false);
             Assert.AreEqual(35, result.Document.Pages.Length);
             Assert.AreEqual(1695, result.Document.Pages[0].Blocks[0].Text.Length);

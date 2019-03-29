@@ -7,5 +7,7 @@ namespace Wikiled.Text.Parser.Api.Data
         public RawDocument Document { get; set; }
 
         public string Name { get; set; }
+
+        public string Type { get; set; } 
     }
 }

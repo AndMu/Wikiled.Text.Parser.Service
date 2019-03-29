@@ -1,17 +1,16 @@
-﻿using System;
-using System.Reflection;
-using Autofac;
+﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Reflection;
 using Wikiled.Common.Utilities.Config;
 using Wikiled.Server.Core.Errors;
 using Wikiled.Server.Core.Helpers;
 using Wikiled.Text.Parser.Readers;
-using Wikiled.Text.Parser.Readers.DevExpress;
 using Wikiled.Text.Parser.Service.Logic;
 
 namespace Wikiled.Text.Parser.Service
@@ -93,7 +92,7 @@ namespace Wikiled.Text.Parser.Service
         {
             builder.RegisterType<ApplicationConfiguration>().As<IApplicationConfiguration>();
             builder.RegisterType<EnviromentHandler>().As<IEnviromentHandler>();
-            builder.RegisterType<DevExpressParserFactory>().As<ITextParserFactory>();
+            builder.RegisterType<ParserFactory>().As<ITextParserFactory>();
         }
     }
 }
