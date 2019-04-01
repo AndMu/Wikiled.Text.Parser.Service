@@ -37,7 +37,7 @@ namespace Wikiled.Text.Parser.Service.Controllers
             string fullPath = handler.GetFileName(request.Name);
             using (var stream = new FileStream(fullPath, FileMode.Create))
             {
-                await stream.WriteAsync(request.Data, 0, request.Data.Length);
+                await stream.WriteAsync(request.Data, 0, request.Data.Length).ConfigureAwait(false);
             }
 
             var fileInfo = new FileInfo(fullPath);
@@ -50,7 +50,7 @@ namespace Wikiled.Text.Parser.Service.Controllers
             var result = await parser.Parse(fileInfo,50).ConfigureAwait(false);
             var parsingResult = new ParsingResult();
             parsingResult.Document = result.Document;
-            result.Type = result.Type.ToString();
+            parsingResult.Type = result.Type.ToString();
             parsingResult.Name = fileInfo.Name;
             return Ok(parsingResult);
         }
