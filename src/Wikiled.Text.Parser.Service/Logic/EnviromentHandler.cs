@@ -31,7 +31,7 @@ namespace Wikiled.Text.Parser.Service.Logic
                 path = Path.Combine(webRootPath, path);
             }
 
-            var fileName = $"{Path.GetFileNameWithoutExtension(name)}_{appConfig.Now.ToString("yyyyMMddhhmmss")}{Path.GetExtension(name)}";
+            var fileName = $"{Path.GetFileNameWithoutExtension(name)}_{appConfig.Now:yyyyMMddhhmmss}{Path.GetExtension(name)}";
             if (!Directory.Exists(path))
             {
                 lock (syncRoot)
