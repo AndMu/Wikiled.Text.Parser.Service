@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>NET472</TargetFramework>
+    <TargetFramework>NET48</TargetFramework>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
     <LangVersion>Latest</LangVersion>
     <PlatformTarget>AnyCPU</PlatformTarget>
