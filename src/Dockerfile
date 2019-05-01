@@ -6,6 +6,8 @@ ARG DOCKER_USER="DockerApp"
 ARG DOCKER_PASS=""
 
 RUN echo $Env:BUILD_VERSION;
+RUN echo $Env:DOCKER_USER;
+RUN echo $Env:DOCKER_PASS;
 
 WORKDIR /source
 
