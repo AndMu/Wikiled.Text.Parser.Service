@@ -6,7 +6,7 @@ ARG DOCKER_USER="DockerApp"
 ARG DOCKER_PASS=""
 
 RUN echo $Env:BUILD_VERSION;
-RUN echo $Env:DOCKER_USER;
+RUN echo c;
 RUN echo $Env:DOCKER_PASS;
 
 WORKDIR /source
@@ -20,6 +20,9 @@ WORKDIR /app
 COPY --from=builder /app .
 ENV ASPNETCORE_ENVIRONMENT Production
 
-RUN net use d: \\192.168.0.140\shared\Docker /user:$Env:DOCKER_USER $Env:DOCKER_PASS /persistent:Yes
+$pass=$Env:DOCKER_PASS|ConvertTo-SecureString -AsPlainText -Force
+$Cred = New-Object System.Management.Automation.PsCredential($Env:DOCKER_PASS, $pass)
+New-PSDrive -name D -Root \\192.168.0.140\shared\Docker -Credential $cred -PSProvider filesystem -Persist
+
 ENTRYPOINT ["Wikiled.Text.Parser.Service.exe"]
 
