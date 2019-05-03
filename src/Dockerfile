@@ -15,6 +15,8 @@ RUN dotnet publish Wikiled.Text.Parser.Service /p:Version=$Env:BUILD_VERSION --o
 
 # Stage 2
 FROM mcr.microsoft.com/dotnet/framework/runtime:4.8
+SHELL ["powershell", "-NoProfile", "-Command"]
+
 WORKDIR /app
 COPY --from=builder /app .
 ENV ASPNETCORE_ENVIRONMENT Production
