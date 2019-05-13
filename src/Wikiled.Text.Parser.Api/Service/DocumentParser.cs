@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Wikiled.Common.Net.Client;
@@ -12,10 +13,21 @@ namespace Wikiled.Text.Parser.Api.Service
 
         public DocumentParser(IApiClientFactory factory)
         {
-            if (factory == null) throw new ArgumentNullException(nameof(factory));
+            if (factory == null)
+            {
+                throw new ArgumentNullException(nameof(factory));
+            }
+
             client = factory.GetClient();
             client = client ?? throw new ArgumentNullException(nameof(client));
         }
+
+        public static IDocumentParser Construct(string server, int port)
+        {
+            return new DocumentParser(new ApiClientFactory(new HttpClient { Timeout = TimeSpan.FromMinutes(4) },
+                                                           new Uri($"http://{server}:{port}")));
+        }
+
 
         public async Task<ParsingResult> Parse(string name, byte[] fileData, CancellationToken token)
         {
