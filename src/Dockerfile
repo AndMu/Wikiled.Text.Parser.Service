@@ -13,5 +13,6 @@ FROM mcr.microsoft.com/dotnet/framework/runtime:4.8
 WORKDIR /app
 COPY --from=builder /app .
 ENV ASPNETCORE_ENVIRONMENT Production
+ENV ASPNETCORE_URLS=http://+:80
 
 ENTRYPOINT ["Wikiled.Text.Parser.Service.exe"] 
