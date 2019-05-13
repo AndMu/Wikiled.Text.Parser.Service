@@ -9,20 +9,6 @@ RUN dotnet publish Wikiled.Text.Parser.Service /p:Version=$Env:BUILD_VERSION --o
 
 # Stage 2
 FROM mcr.microsoft.com/dotnet/framework/runtime:4.8
-SHELL ["powershell", "-NoProfile", "-Command"]
-
-# Create Windows user in the container
-RUN net user /add docker
-RUN net localgroup Administrators docker /add
-
-# Set it for subsequent commands
-USER docker
-
-ARG DOCKER_USER="DockerApp"
-ARG DOCKER_PASS=""
-
-RUN echo $Env:DOCKER_PASS;
-RUN echo $env:UserName
 
 WORKDIR /app
 COPY --from=builder /app .
