@@ -20,9 +20,7 @@ namespace Wikiled.Text.Parser.Service.Controllers
 
         private readonly IEnviromentHandler handler;
 
-        public ParserController(ILoggerFactory loggerFactory,
-                                ITextParserFactory parser,
-                                IEnviromentHandler handler)
+        public ParserController(ILoggerFactory loggerFactory, ITextParserFactory parser, IEnviromentHandler handler)
             : base(loggerFactory)
         {
             parserFactory = parser ?? throw new ArgumentNullException(nameof(parser));

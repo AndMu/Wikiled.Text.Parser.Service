@@ -14,8 +14,8 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
-    <PackageReference Include="Wikiled.Common.Net" Version="1.1.14" />
-    <PackageReference Include="Wikiled.Text.Analysis" Version="1.7.11" />
+    <PackageReference Include="Wikiled.Common.Net" Version="1.2.3" />
+    <PackageReference Include="Wikiled.Text.Analysis" Version="1.7.16" />
   </ItemGroup>
 
   <Target Name="ForceGenerationOfBindingRedirects" AfterTargets="ResolveAssemblyReferences" BeforeTargets="GenerateBindingRedirects" Condition="'$(AutoGenerateBindingRedirects)' == 'true'">

@@ -28,7 +28,6 @@ namespace Wikiled.Text.Parser.Api.Service
                                                            new Uri($"http://{server}:{port}")));
         }
 
-
         public async Task<ParsingResult> Parse(string name, byte[] fileData, CancellationToken token)
         {
             if (name is null)
