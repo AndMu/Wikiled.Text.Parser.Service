@@ -9,5 +9,7 @@ namespace Wikiled.Text.Parser.Api.Data
 
         [Required]
         public byte[] Data { get; set; }
+
+        public bool OnlyOcr { get; set; }
     }
 }
