@@ -6,10 +6,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
+using System.IO;
 using System.Reflection;
 using Wikiled.Common.Utilities.Config;
 using Wikiled.Server.Core.Errors;
 using Wikiled.Server.Core.Helpers;
+using Wikiled.Text.Parser.Ocr;
 using Wikiled.Text.Parser.Readers;
 using Wikiled.Text.Parser.Service.Logic;
 
@@ -90,6 +92,7 @@ namespace Wikiled.Text.Parser.Service
 
         private void SetupOther(ContainerBuilder builder)
         {
+            builder.RegisterInstance(new OcrImageParser(Path.Combine(Env.ContentRootPath, "tessdata"))).As<IOcrImageParser>();
             builder.RegisterType<ApplicationConfiguration>().As<IApplicationConfiguration>();
             builder.RegisterType<EnviromentHandler>().As<IEnviromentHandler>();
             builder.RegisterType<ParserFactory>().As<ITextParserFactory>();
