@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using Wikiled.Common.Net.Client;
 using Wikiled.Server.Core.Testing.Server;
+using Wikiled.Text.Parser.Api.Data;
 using Wikiled.Text.Parser.Api.Service;
 
 namespace Wikiled.Text.Parser.Service.Tests.Acceptance
@@ -32,7 +33,10 @@ namespace Wikiled.Text.Parser.Service.Tests.Acceptance
         {
             var parser = new DocumentParser(new ApiClientFactory(wrapper.Client, wrapper.Client.BaseAddress));
             var data = File.ReadAllBytes(Path.Combine(TestContext.CurrentContext.TestDirectory, "Data", "Research.pdf"));
-            var result = await parser.Parse("Test.pdf", data, CancellationToken.None).ConfigureAwait(false);
+            var request = new ParsingRequest();
+            request.Name = "Test.pdf";
+            request.Data = data;
+            var result = await parser.Parse(request, CancellationToken.None).ConfigureAwait(false);
             Assert.AreEqual(35, result.Document.Pages.Length);
             Assert.AreEqual(1718, result.Document.Pages[0].Blocks[0].Text.Length);
         }

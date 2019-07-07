@@ -28,21 +28,13 @@ namespace Wikiled.Text.Parser.Api.Service
                                                            new Uri($"http://{server}:{port}")));
         }
 
-        public async Task<ParsingResult> Parse(string name, byte[] fileData, CancellationToken token)
+        public async Task<ParsingResult> Parse(ParsingRequest request, CancellationToken token)
         {
-            if (name is null)
+            if (request == null)
             {
-                throw new ArgumentNullException(nameof(name));
+                throw new ArgumentNullException(nameof(request));
             }
 
-            if (fileData is null)
-            {
-                throw new ArgumentNullException(nameof(fileData));
-            }
-
-            ParsingRequest request = new ParsingRequest();
-            request.Data = fileData;
-            request.Name = name;
             var result = await client.PostRequest<ParsingRequest, RawResponse<ParsingResult>>("api/parser/processfile", request, token).ConfigureAwait(false);
             if (!result.IsSuccess)
             {
