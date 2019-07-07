@@ -30,7 +30,7 @@
     <PackageReference Include="Wikiled.Server.Core" Version="1.2.17" />
     <PackageReference Include="Wikiled.Common" Version="1.1.9" />
     <PackageReference Include="Wikiled.Server.Core.Testing" Version="1.2.17" />
-    <PackageReference Include="Wikiled.Text.Parser" Version="1.1.1" />
+    <PackageReference Include="Wikiled.Text.Parser" Version="1.1.2" />
     <PackageReference Include="RichardSzalay.MockHttp" Version="5.0.0" />
     <PackageReference Include="Tesseract" Version="3.3.0" />
   </ItemGroup>

@@ -19,10 +19,13 @@ namespace Wikiled.Text.Parser.Service
 {
     public class Startup
     {
+        private readonly ILoggerFactory loggerFactory;
+
         private readonly ILogger<Startup> logger;
 
         public Startup(ILoggerFactory loggerFactory, IHostingEnvironment env)
         {
+            this.loggerFactory = loggerFactory;
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -92,7 +95,7 @@ namespace Wikiled.Text.Parser.Service
 
         private void SetupOther(ContainerBuilder builder)
         {
-            builder.RegisterInstance(new OcrImageParser(Path.Combine(Env.ContentRootPath, "tessdata"))).As<IOcrImageParser>();
+            builder.RegisterInstance(new OcrImageParser(loggerFactory.CreateLogger<OcrImageParser>(), Path.Combine(Env.ContentRootPath, "tessdata"))).As<IOcrImageParser>();
             builder.RegisterType<ApplicationConfiguration>().As<IApplicationConfiguration>();
             builder.RegisterType<EnviromentHandler>().As<IEnviromentHandler>();
             builder.RegisterType<ParserFactory>().As<ITextParserFactory>();
