@@ -24,7 +24,7 @@ namespace Wikiled.Text.Parser.Api.Service
 
         public static IDocumentParser Construct(string server, int port)
         {
-            return new DocumentParser(new ApiClientFactory(new HttpClient { Timeout = TimeSpan.FromMinutes(4) },
+            return new DocumentParser(new ApiClientFactory(new HttpClient { Timeout = TimeSpan.FromMinutes(30) },
                                                            new Uri($"http://{server}:{port}")));
         }
 
