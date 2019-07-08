@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Wikiled.Server.Core.ActionFilters;
 using Wikiled.Server.Core.Controllers;
+using Wikiled.Text.Parser.Api.Data;
 using Wikiled.Text.Parser.Data;
 using Wikiled.Text.Parser.Readers;
 using Wikiled.Text.Parser.Readers.DevExpress;
@@ -46,8 +47,24 @@ namespace Wikiled.Text.Parser.Service.Controllers
             {
                 return StatusCode(500, "Can't process this type of file");
             }
+
+            ParsingType type;
+            switch (request.Type)
+            {
+                case RequestParsingType.Extract:
+                    type = ParsingType.Extract;
+                    break;
+                case RequestParsingType.OCR:
+                    type = ParsingType.OCR;
+                    break;
+                case RequestParsingType.Any:
+                    type = ParsingType.Any;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
             
-            var orcRequest = new Readers.ParsingRequest(fileInfo, request.OnlyOcr ? ParsingType.OCR : ParsingType.Any, 50);
+            var orcRequest = new Readers.ParsingRequest(fileInfo, type, 50);
             var result = await parser.Parse(orcRequest).ConfigureAwait(false);
             var parsingResult = new ParsingResult();
             parsingResult.Document = result.Document;

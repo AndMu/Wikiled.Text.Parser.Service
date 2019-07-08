@@ -36,7 +36,7 @@ namespace Wikiled.Text.Parser.Service.Tests.Acceptance
             var request = new ParsingRequest();
             request.Name = "Test.pdf";
             request.Data = data;
-            request.OnlyOcr = true;
+            request.Type = RequestParsingType.OCR;
             var result = await parser.Parse(request, CancellationToken.None).ConfigureAwait(false);
             Assert.AreEqual(35, result.Document.Pages.Length);
             Assert.GreaterOrEqual(result.Document.Pages[0].Build().Length, 1718);

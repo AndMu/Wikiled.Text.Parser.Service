@@ -13,7 +13,7 @@ namespace Wikiled.Text.Parser.Service.Logic
 
         private readonly IApplicationConfiguration appConfig;
 
-        public readonly DocumentsConfig config;
+        private readonly DocumentsConfig config;
 
         public EnviromentHandler(IApplicationConfiguration appConfig, IHostingEnvironment environment, DocumentsConfig config)
         {
