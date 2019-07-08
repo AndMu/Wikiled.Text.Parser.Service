@@ -11,6 +11,7 @@ using System.Reflection;
 using Wikiled.Common.Utilities.Config;
 using Wikiled.Server.Core.Errors;
 using Wikiled.Server.Core.Helpers;
+using Wikiled.Server.Core.Performance;
 using Wikiled.Text.Parser.Ocr;
 using Wikiled.Text.Parser.Readers;
 using Wikiled.Text.Parser.Service.Logic;
@@ -87,7 +88,7 @@ namespace Wikiled.Text.Parser.Service
             SetupOther(builder);
             builder.Populate(services);
             var appContainer = builder.Build();
-
+            services.AddHostedService<ResourceMonitoringService>();
             logger.LogInformation("Ready!");
             // Create the IServiceProvider based on the container.
             return new AutofacServiceProvider(appContainer);
